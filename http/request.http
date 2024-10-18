@@ -1,0 +1,54 @@
+GET {{$dotenv gatewayApi}}/products
+
+###
+GET {{$dotenv gatewayApi}}/products/1
+
+###
+GET {{$dotenv gatewayApi}}/orders
+
+###
+GET {{$dotenv gatewayApi}}/orders/1
+
+###
+GET {{$dotenv gatewayApi}}/users
+
+###
+GET {{$dotenv gatewayApi}}/users/1
+
+
+###
+POST {{$dotenv gatewayApi}}/orders
+Content-Type: application/json
+
+{
+  "userId": 1,
+  "items": [
+    { "productId": 1, "price": 100, "quantity": 7 }
+  ]
+}
+
+
+###
+POST {{$dotenv gatewayApi}}/orders
+Content-Type: application/json
+
+{
+  "userId": 1,
+  "items": [
+    { "productId": 5, "price": 100, "quantity": 1 }
+  ]
+}
+
+
+###
+POST {{$dotenv gatewayApi}}/comments
+Content-Type: application/json
+
+{
+    "productId": 1,
+    "userId": 1,
+    "content": "Lorem Ipsum"
+  }
+
+###
+GET  {{$dotenv gatewayApi}}/comments

@@ -1,0 +1,40 @@
+_format_version: '3.0'
+_transform: true
+
+services:
+  - name: graphql-gateway
+    url: http://host.docker.internal:8384
+    routes:
+      - name: graphql-gateway
+        paths:
+          - /
+  - name: product-service
+    url: http://host.docker.internal:8381
+    routes:
+      - name: products
+        paths:
+          - /products
+  - name: order-service
+    url: http://host.docker.internal:8382
+    routes:
+      - name: orders
+        paths:
+          - /orders
+  - name: user-service
+    url: http://host.docker.internal:8383
+    routes:
+      - name: users
+        paths:
+          - /users
+  - name: comment-service
+    url: http://host.docker.internal:8386
+    routes:
+      - name: comments
+        paths:
+          - /comments
+plugins:
+  - name: correlation-id
+    config:
+      header_name: X-Correlation-ID
+      generator: uuid
+      echo_downstream: false
